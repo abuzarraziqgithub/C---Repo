@@ -3,26 +3,22 @@
 using namespace std;
 
 int main(){
-    // Arrays are contsant and we can't modify it
-    // Vectors are dynamic and we can add, remove elements
 
-    vector<int> v;
-    v.push_back(1);
-    v.emplace_back(2);
+    vector<int> v = {1,2,3,4,5,6,7,8,9};
 
-    // Using pair
-    vector<pair<int, int>> p;
-    p.push_back({1,2});
-    // syntax is changed for emplace_back(it is also faster than push_back)
-    p.emplace_back(3,4);
+    // Iterators points to the memory of the element
+    vector<int>::iterator i = v.begin(); // it begins pointing to the first element address 
+    i++; // memory is contigious so it will shift to the next right to the first
+    cout << *(i)/*to access value of that memory we use *() */ << " " << endl;
+     i = i+2; // shifted two positions
+    cout << *(i) << " ";
 
-    vector<int> s(5, 100); // {100,100,100,100,100}
-    vector<int> s2(5); // {0,0,0,0,0} or any garbage instances depends on the compiler and despite of giving the size we can push,empace value to it so it will dynamically allocate it on the back
+    vector<int> s = {100,200,300,400};
+    vector<int>::iterator itEnd = s.end(); // remember that it will point right after the last element address(not the last but right after) 
+    vector<int>::reverse_iterator rItEnd = s.rend(); // it reverse the vector(so 9 would be at 0 and 1 at 8 poistion) and then point before the 1st element address
+    vector<int>::reverse_iterator rItRev = s.rbegin();  // it reverse the vector and point the 1st(s[0] = 400 and move to the next when rItEnd++)
 
-    vector<int> s3(5,20);
-    vector<int> s4(s3);// pass by value so it will copy the s3
-    // we can access the elements what we do using arrays and v.at() but v[] is preffered
-
+    v.back(); // last element of the vector
 
 
 }
