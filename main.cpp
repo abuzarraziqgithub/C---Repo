@@ -1,4 +1,5 @@
 #include<iostream>
+#include <cstring>
 // #include "Hero.cpp"
 using namespace std;
 
@@ -8,7 +9,15 @@ class Hero {
     int health;
 
     public:
+    char *name;
     char level;
+
+
+    // Constructor: Default constructor initialized when/during creation of instance, with no input paras, no return type { Hero abuzar ---> abuzar.Hero()-> This is default constructor called automatically}
+    // Hero(){
+    //     cout << "Simple/default constructor called" << endl;
+    //     name = new char[100];
+    // }
 
     // getters and setters
     // can read and manipulate the private data
@@ -19,16 +28,17 @@ class Hero {
         health = h;
     }
 
+    void setName(char name[]){
+        strcpy(this->name, name);
+    }
+
     void print(){
         cout << "Health" << "\t" << this->health << endl;
         cout<<"Level" << "\t" << this->level << endl;
+        cout<<"Name" << "\t" << this->name << endl;
     }
 
-    // Constructor: Default constructor initialized when/during creation of instance, with no input paras, no return type { Hero abuzar ---> abuzar.Hero()-> This is default constructor called automatically}
     
-    Hero(){
-        cout << "Default Contructor Called!" << endl;
-    }
     
     // Parametarized Constructor
     Hero(int health) {
@@ -45,36 +55,53 @@ class Hero {
 
     // Copy constructor
     Hero(Hero& /*Pass by reference so it can pass the exact object*/ temp) {
+
+        char *ch =  new char[strlen(temp.name) + 1]; // ?
+        strcpy(ch, temp.name);
+
         cout << "Copy constructor called"<< endl;
         this->health = temp.health;
         this->level = temp.level;
+        this->name = temp.name;
     }
 
 };
 
 int main(){
 
-    Hero shafqat;
-    shafqat.setHealth(40);
-    shafqat.level = 'S';
-    shafqat.print();
+    Hero hero1;
+    hero1.setHealth(60);
+    hero1.level = 'H';
+    char name[7] = "Abuzar";
+    hero1.setName(name);
 
-    // Copy Constructor
-    Hero essa(shafqat);
-    essa.print();
-    // essa.setHealth = shafqat.setHealth;
-    // essa.level = shafqat.level;
+    hero1.print();
 
+    Hero hero2(hero1);
+    hero2.print();
 
-
-
-
-
-
-
-
+    hero1.name[3] = 'b';
+    hero1.setHealth(50);
+    hero1.print();
+    hero2.print();
+    // It will result in the same, because we are copying the address of the name(*name pointer) and when we change the first char of the name, the name pointer in the 2nd object also pointing to that same memory address.
+    // Shallow copy(default copy constructor): same memory access
 
 
+
+
+
+
+    // Hero shafqat;
+    // shafqat.setHealth(40);
+    // shafqat.level = 'S';
+    // shafqat.print();
+
+    // // Copy Constructor
+    // Hero essa(shafqat);
+    // essa.print();
+    // // essa.setHealth = shafqat.setHealth;
+    // // essa.level = shafqat.level;
 
 
 
