@@ -46,11 +46,11 @@ class Solution{
     vector<int> runningSum(vector<int>& nums){
 
         vector<int> answerArr;
-
+        
         for(int i = 0; i <= nums.size() - 1; i++){
             int runningSum = 0;
-            for(int j = 0; j <= i; j++){
-                runningSum += nums[j];  
+            for(int j = 0; j <= i; j++ ){
+                runningSum += nums[j];
             }
             answerArr.push_back(runningSum);
         }
@@ -59,19 +59,52 @@ class Solution{
     }
 
     // Home Work - Try to sum the next value with the previous one(not all previous)
+
+    
+};
+// EFFICIENT
+class Solution2{
+    public:
+    vector<int> runningSum(vector<int>& nums){
+
+        vector<int> answerArr;
+        int runningSum = 0;
+        
+        for(int i = 0; i <= nums.size() - 1; i++){
+            runningSum += nums[i];    
+            answerArr.push_back(runningSum);
+        }
+        return answerArr;
+
+    }
+
+    // Home Work - Try to sum the next value with the previous one(not all previous)
+    
+    
 };
 
 
 int main() {
     
     Solution solution;
+    Solution2 solution2;
+
     vector<int> nums = {1,2,3,4};
     vector<int> result = solution.runningSum(nums);
     
-    // Print the result
+    vector<int> result2 = solution2.runningSum(nums);
+
+    // For Solution 
     for(int num : result) {
         cout << num << " ";
     }
     cout << endl;
+
+    // For Solution2
+    for(int num : result2) {
+        cout << num << " ";
+    }
+    cout << endl;
+
 
 }
