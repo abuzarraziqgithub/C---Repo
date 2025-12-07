@@ -28,6 +28,18 @@ n == gain.length
 
 */
 
+/*
+ - Understanding: We are given an array of gain, we have to find the highest alitude value by prefix_sum(sum of current value by the previous sum), the value should greater than or equal to 0 and less than the length of the array.     
+
+ - Approach: 
+   - intitialize two variables with zero
+   - Iterate over the array
+   - sum current_Altitude with the index values
+   - If current_Altitude is greater than max_Altitude
+     - Reassign the max_Altitude with the updated value(max value)
+   - Return the max_Altitude value  
+*/
+
 
 class Solution {
 public:
@@ -57,4 +69,6 @@ int main(){
     cout << result << endl;
 
     cout << " ";
+
+
 }
